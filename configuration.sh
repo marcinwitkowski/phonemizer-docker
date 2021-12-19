@@ -8,5 +8,5 @@ cp phonemizer-docker/app.py phonemizer/app.py
 cd phonemizer
 
 sudo docker build -t phonemizer .
-
+sudo docker run --name PhonemizerApp --expose 5000 phonemizer
 
