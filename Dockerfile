@@ -25,6 +25,7 @@ COPY . /phonemizer
 RUN cd /phonemizer && \
     python3 setup.py install && \
     phonemize --version && \
+    python3 -m pytest -v test
 
 CMD ["python3", "app.py"]
 
