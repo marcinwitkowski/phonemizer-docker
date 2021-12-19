@@ -18,14 +18,13 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
         python3-pip && \
     apt-get clean
 
-RUN pip install -r requirements.txt
+RUN pip install Flask
 RUN ln -s /usr/bin/python3 /usr/bin/python
 COPY . /phonemizer
 
 RUN cd /phonemizer && \
     python3 setup.py install && \
     phonemize --version && \
-    python3 -m pytest -v test
 
 CMD ["python3", "app.py"]
 
