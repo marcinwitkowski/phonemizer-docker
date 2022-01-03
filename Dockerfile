@@ -19,6 +19,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     apt-get clean
 
 RUN pip install Flask
+RUN pip install flask-cors
 RUN pip install pytest
 RUN ln -s /usr/bin/python3 /usr/bin/python
 COPY . /phonemizer
