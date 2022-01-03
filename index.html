@@ -6,11 +6,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
+            $("#send").prop('disabled', true);
             $('#send').on('click', function () {
                 console.log(list)
 
                 $.ajax({
-                    url: 'YOUR_LOCAL_IP_ADRESS:5000/post', //replace with my email
+                    url: 'http://89.68.168.84:5000/post', //replace with HTTP://YOUR_IP_ADRESS:PORT/POST
                     headers: {
                         "Content-type": "application/json",
                         "Access-Control-Allow-Origin": "*",
@@ -23,6 +24,8 @@
                         $("#req").html('<p>' + data["output-text"].join(' . ') + '</p>')
                     },
                 });
+                $("#send").prop('disabled', true);
+                list = []
             });
 
             var list = []
@@ -31,6 +34,7 @@
                 list.push($("textarea[name=word]").val())
                 $("textarea[name=word]").val("")
                 console.log(list)
+                $("#send").prop('disabled', false);
             });
         });
     </script>
