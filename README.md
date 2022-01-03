@@ -6,6 +6,6 @@ Run the application:
 
 git clone https://github.com/jlalus/phonemizer-docker
 
-chmod 744 phonemizer/configuration.sh
+chmod 744 phonemizer-docker/configuration.sh
 
-./phonemizer/configuration.sh
+./phonemizer-docker/configuration.sh
