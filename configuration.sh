@@ -9,5 +9,5 @@ rm -rf phonemizer-docker/
 cd phonemizer
 
 sudo docker build -t phonemizer .
-sudo docker run --network="host" --name PhonemizerApp4 --expose 5000 phonemizer
+sudo docker run --network="host" --name PhonemizerApp --expose 5000 phonemizer
 
