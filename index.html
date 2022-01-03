@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#send').on('click', function () {
+                console.log(list)
+
+                $.ajax({
+                    url: 'YOUR_LOCAL_IP_ADRESS:5000/post', //replace with my email
+                    headers: {
+                        "Content-type": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    data: '{"text":' + JSON.stringify(list) + '}',
+                    success: function (data) {
+
+                        $("#req").html('<p>' + data["output-text"].join(' . ') + '</p>')
+                    },
+                });
+            });
+
+            var list = []
+
+            $('#add').on('click', function () {
+                list.push($("textarea[name=word]").val())
+                $("textarea[name=word]").val("")
+                console.log(list)
+            });
+        });
+    </script>
+    <style>
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main">
+        <textarea name='word'></textarea>
+        <div id="req"></div>
+        <input type='button' id="add" value='Add to list'>
+        <input type='button' id="send" value='Send data'>
+
+    </div>
+</body>
+
+</html>
