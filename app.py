@@ -14,8 +14,9 @@ def home():
 @app.route('/post', methods=['POST'])
 def post_route():
     if request.method == 'POST':
-
+        
         data = request.get_json(force=True)
+        print(data)
         txt = data['text']
 
         out = []
