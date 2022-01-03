@@ -3,7 +3,7 @@ import re
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/', methods=['GET'])
 def home():
