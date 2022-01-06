@@ -34,7 +34,7 @@ def post_route():
 
 def use_phonemizer(txt, language="pl", backend='espeak'):
     shell_cmd = f"\
-        echo '{txt}' | phonemize -b {backend} -l {language} -p ' ' -w '|' --words-mismatch ignore \
+        echo '{txt}' | phonemize -b {backend} -l {language} -p '' -w ' ' --words-mismatch ignore \
     "
     output = os.popen(shell_cmd).read()
     return output
