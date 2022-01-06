@@ -16,4 +16,4 @@ Then add a few words to the list (type one word -> add to list). Then send the q
 
 
 If you want check logs from docker app use:
-sudo docker inspect --format='{{.LogPath}}' PhonemizerApp | xargs sudo cat
+sudo docker inspect --format='{{.LogPath}}' PhonemizerApp | xargs sudo cat >  ~/phonemizer/out.log
