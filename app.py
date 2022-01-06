@@ -2,9 +2,12 @@ import os
 import re
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import logging
 
 app = Flask(__name__)
 CORS(app)
+logging.basicConfig(level=logging.DEBUG)
+
 
 @app.route('/', methods=['GET'])
 def home():
@@ -15,7 +18,7 @@ def home():
 @app.route('/post', methods=['POST'])
 def post_route():
     if request.method == 'POST':
-        
+
         data = request.get_json(force=True)
         print(data)
         txt = data['text']
@@ -25,7 +28,7 @@ def post_route():
             temp = use_phonemizer(t)
             temp = re.sub(r'[^\w]', ' ', temp)
             out.append(temp)
-        print('Data Received: "{data}"'.format(data=data))
+        app.logger.info('Data Received: "{data}"'.format(data=data))
         return jsonify({"output-text": out})
 
 
