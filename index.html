@@ -8,10 +8,11 @@
         $(document).ready(function () {
             $("#send").prop('disabled', true);
             $('#send').on('click', function () {
+                $("#list").html("")
                 console.log(list)
 
                 $.ajax({
-                    url: 'http://89.68.168.84:5000/post', //replace with HTTP://YOUR_IP_ADRESS:PORT/POST
+                    url: 'http://YOUR_IP_ADRESS:5000/post', //replace with HTTP://YOUR_IP_ADRESS:PORT/POST
                     headers: {
                         "Content-type": "application/json",
                         "Access-Control-Allow-Origin": "*",
@@ -21,7 +22,7 @@
                     data: '{"text":' + JSON.stringify(list) + '}',
                     success: function (data) {
 
-                        $("#req").html('<p>' + data["output-text"].join(' . ') + '</p>')
+                        $("#req").html('<p>' + data["output-text"].join('') + '</p>')
                     },
                 });
                 $("#send").prop('disabled', true);
@@ -33,6 +34,7 @@
             $('#add').on('click', function () {
                 list.push($("textarea[name=word]").val())
                 $("textarea[name=word]").val("")
+                $("#list").html('<p>' + list + '</p>')
                 console.log(list)
                 $("#send").prop('disabled', false);
             });
@@ -55,6 +57,7 @@
         <div id="req"></div>
         <input type='button' id="add" value='Add to list'>
         <input type='button' id="send" value='Send data'>
+        <div id="list"></div>
 
     </div>
 </body>
